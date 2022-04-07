@@ -1,0 +1,55 @@
+
+
+<body>
+    <main>
+    <%- include('elements/header'); -%>
+
+        <section class="section-games" id="section-games">
+            <div class="u-center-text u-margin-bottom-big">
+                <h2 class="heading-secondary">
+                    GRY PLANSZOWE
+                </h2>
+            </div>
+
+            <div class="row mt-70">
+                <% getPlanszowe.forEach(function(game) { %>
+                    <div class="col-1-of-4 mb-150 ">
+                        <div class="card">
+                            <div class="card__side card__side--front">                               
+                                    <div class="card__picture">
+                                        <a class=""> <img src="/img/<%=game.img_source%>" alt="Picture Of Game" class="card__picture"></a>                                       
+                                        &nbsp;
+                                    </div>
+                                    <h4 class="card__heading">
+                                        <span class="card__heading-span card__heading-span--1"><%=game.title%></span>
+                                    </h4>
+                                    <div class="card__details">
+                                        <ul>
+                                            <li><%=game.pubHouse%></li>
+                                            <li><%=game.author%></li>
+                                            <li>Do <%=game.players%> graczy</li>
+                                            <li>Od <%=game.agePlayers%> lat</li>
+                                            <li>Data Wydania <%=game.date_publishment?.toLocaleString().split(',')[0] %></li>
+                                        </ul>
+                                    </div>
+                            </div>
+                            <div class="card__side card__side--back card__side--back-1">
+                                    <div class="card__cta">
+                                        <div class="card__price-box">
+                                            <p class="card__price-only">Już teraz tylko</p>
+                                            <p class="card__price-value"><%=game.price%> zł</p>
+                                            <%if (game.isPreorder) {%>
+                                            <p class="card__price-only">PREORDER!</p>
+                                            <%}%>
+                                        </div>
+                                        <a href="/gra/<%=game.id_games%>" class="btn btn--white">Kup teraz</a>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+    <%- include('elements/footer'); -%>
+    </main>
+</body>

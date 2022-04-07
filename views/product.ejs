@@ -1,0 +1,64 @@
+
+<body>
+    <%- include('elements/header'); -%>
+    <main>
+        <section class="section-game">
+            <div class="u-center-text u-margin-bottom-big">
+                <h2 class="heading-secondary">
+                    <%=product.title%>
+                </h2>
+            </div>
+
+            <div class="row mt-70">
+                <div class="col-1-of-2 u-center-text">
+                    <h1 class="paragraph">
+                        <%=product.author%>
+                    </h1>
+
+                    <h1 class="paragraph">
+                        <%=product.pubHouse%>
+                    </h1>
+
+                    <h1 class="paragraph">
+                        <%=product.date_publishment?.toLocaleString().split(',')[0]%>
+                    </h1>
+
+                    <h1 class="paragraph">
+                        Do <%=product.players%> graczy
+                    </h1>
+
+                    <h1 class="paragraph">
+                        Od <%=product.agePlayers%> lat
+                    </h1>
+
+                    <%if (product.isPreorder) {%>
+                        <h1 class="paragraph">PREORDER!</h1>
+                    <%}%>
+
+                    <p class="paragraph">
+                        <%=product.description%>
+                    </p>
+
+                </div>
+                <div class="col-1-of-2">
+                    <div class="composition">
+
+                        <img srcset="/img/<%=product.img_source%> 300w, /img/<%=product.img_source%> 1000w"
+                             sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                             alt="Photo 1"
+                             class="composition__product composition__product--p1"
+                             src="/img/<%=product.img_source%>">      
+                                                        
+                    </div>
+                   
+                </div>              
+            </div>
+            <div class="u-center-text u-margin-top-huge mb-50">
+                <form method="POST" action="/addToCard/<%=product.id_games%>">
+                    <a href="/koszyk" ><button class="btn btn--blue" type="submit">Jedyne <%=product.price%> zł Kup teraz</button></a>
+                </form>
+            </div>
+        </section>        
+    </main>
+    <%- include('elements/footer'); -%>
+</body>

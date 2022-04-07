@@ -1,0 +1,65 @@
+<body>
+    <main>
+    <%- include('elements/header'); -%>
+    <section class="section-game" id="section-game">
+        
+
+        <div class="row mt-70">
+            <% if (products.length) {%>
+                <div class="u-center-text u-margin-bottom-big">
+                    <h1 class="heading-secondary">
+                        Koszyk
+                    </h1>
+                </div>
+                <% products.forEach(function(product) { %>
+                    <div class="col-1-of-4 mb-150 ">
+                        <div class="card">
+                            <div class="card__side card__side--front">                               
+                                    <div class="card__picture">
+                                        <a class=""> <img src="/img/<%=product.img_source%>" alt="Picture Of Game" class="card__picture"></a>                                       
+                                        &nbsp;
+                                    </div>
+                                    <h4 class="card__heading">
+                                        <span class="card__heading-span card__heading-span--2"><%=product.title%></span>
+                                    </h4>
+                                    <div class="card__details">
+                                        <ul>
+                                            <li></li>
+                                            <li>Ilość <%=product.count%></li>                                            
+                                            <li>Cena <%=product.price%> zł</li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                            </div>
+                            <div class="card__side card__side--back card__side--back-2">
+                                    <div class="card__cta">
+
+                                        <form action="/remove-card/<%=product.id_cards%>" method="POST">
+                                            <button type="submit"class="btn btn--white">Usuń</button>
+                                        </form>
+                                    </div>
+                                </div>                               
+                        </div>
+                    </div>
+                    
+                <% })  %>              
+
+            <% } else { %>
+                    <div class="u-center-text u-margin-bottom-big">
+                        <h2 class="heading-secondary">
+                            Koszyk Jest pusty
+                        </h2>
+                    </div>               
+            <% }  %>
+        </div>
+        <% if (products.length) {%>
+            <div class="u-center-text u-margin-bottom-small">
+                <h2 class="heading-card">
+                    Całkowity koszt: <%=allPrice%> zł
+                </h2>
+            </div>
+        <% }%>
+    </section>
+    <%- include('elements/footer'); -%>
+</main>
+</body>

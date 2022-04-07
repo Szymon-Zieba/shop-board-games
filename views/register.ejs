@@ -1,0 +1,44 @@
+<body >
+    <main>
+        <div class="section-background">
+            <div class="section-login">
+                <div class="header__logo-box-login">
+                    <a href="/"><img src="/img/logo-white.png" alt="Logo" class="header__logo"></a>
+                </div> 
+                <div class="section-login__text">
+                    <h1 class="section-login__text-1">
+                        Rejestracja
+                    </h1>
+                </div>
+                <div class="section-login__input row">
+                    <form class="register" action="/register" method="POST" >
+                        <div class="section-login__input-in">
+                            <input  required class="section-login__input-in-1" type="text" id="name" placeholder="Imie" name="name" autocomplete="off">
+                            <br>
+                            <input required class="section-login__input-in-1" type="text" id="lastName"  placeholder="Nazwisko" name="lastName" autocomplete="off">              
+                            <br>
+                            <input required class="section-login__input-in-1"  type="password" id="password" placeholder="Hasło"  name="password" autocomplete="off">
+                            <br>
+                            <input required class="section-login__input-in-1" type="email" id="email" placeholder="Email"  name="email" autocomplete="off">         
+                            <br>
+                            <input required class="section-login__input-in-1" type="text" id="adress" placeholder="Adres"  name="adress" autocomplete="off">  
+                            <br>
+                            <input required class="section-login__input-in-1" title = "Wpisz 9 cyfr!" pattern="^[0-9\-\+]{9,15}$"   type="text" placeholder="Nr Telefonu" maxlength="9" size="9" name="phone_number" autocomplete="off">   
+                        </div>                      
+
+                        <% if(error){ %>
+                            <div class="section-login__input-error">
+                                <h1 class="section-login__input-error-h1">
+                                    <%=error%>
+                                </h1>
+                            </div>    
+                        <%} %> 
+                        <div class="section-login__input-button">                        
+                            <button class="btn btn--white" type="submit" >Rejestracja</button>  
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
